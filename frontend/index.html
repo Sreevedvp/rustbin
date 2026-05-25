@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RustBin // Minimalist Multi-IDE & Performance Optimizer</title>
+    <title>RustBin // Minimalist Compiler Playground</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Comic+Neue:wght@400;700&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Clean Neobrutalist stylesheet -->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="notion-layout">
-        <!-- Minimalist Left Sidebar -->
+        <!-- Minimalist Sidebar -->
         <aside class="notion-sidebar border-neobrutalist shadow-flat">
             <div class="sidebar-brand">
-                <span class="brand-icon">✏️</span>
+                <span class="brand-icon">🖍️</span>
                 <h2 class="brand-title">Rust<span>Bin</span></h2>
             </div>
             
@@ -26,43 +24,32 @@
                 <div class="nav-title">WORKSPACE PLAYGROUNDS</div>
                 <div class="nav-item active" data-page="rust-ide">
                     <span class="nav-icon">🦀</span>
-                    <span class="nav-text">Rust IDE</span>
+                    <span class="nav-text">Rust Compiler</span>
                 </div>
                 <div class="nav-item" data-page="js-ide">
                     <span class="nav-icon">🟨</span>
-                    <span class="nav-text">JavaScript IDE</span>
-                </div>
-                <div class="nav-title">DOCUMENTATION</div>
-                <div class="nav-item" data-page="about">
-                    <span class="nav-icon">🧠</span>
-                    <span class="nav-text">About the Tech</span>
+                    <span class="nav-text">JavaScript Compiler</span>
                 </div>
             </nav>
 
             <div class="sidebar-footer-tip">
-                <span>🔐 Compiled offline in sandboxed environments</span>
+                <span>🔐 Sandboxed Offline Evaluation</span>
             </div>
         </aside>
 
         <!-- Main Document Area (Fitted to viewport, no body scrolls) -->
         <main class="notion-document">
             
-            <!-- Page 1: Rust IDE & Optimizer (Minimalist) -->
+            <!-- Page 1: Rust Compiler -->
             <div class="document-page active" id="page-rust-ide">
                 <header class="doc-header-minimal border-neobrutalist yellow-bg">
                     <div class="header-left">
                         <span class="page-emoji">🦀</span>
-                        <h1 class="page-title">Rust Playground</h1>
+                        <h1 class="page-title">Rust Playpen</h1>
                     </div>
                     <div class="ide-controls">
                         <button id="btn-run-rust" class="control-btn border-neobrutalist shadow-flat yellow-btn">
-                            🖍️ Run
-                        </button>
-                        <button id="btn-bench-rust" class="control-btn border-neobrutalist shadow-flat cyan-btn">
-                            ⏱️ Benchmark
-                        </button>
-                        <button id="btn-analyze-rust" class="control-btn border-neobrutalist shadow-flat pink-btn">
-                            🔍 Optimize
+                            🖍️ Run Code
                         </button>
                     </div>
                 </header>
@@ -72,12 +59,12 @@
                     <section class="editor-pane border-neobrutalist shadow-flat">
                         <div class="editor-pane-header">
                             <span class="editor-filename">📄 main.rs</span>
-                            <span class="editor-tag border-neobrutalist">Rust v1.88.0</span>
+                            <span class="editor-tag border-neobrutalist">Rust v1.88</span>
                         </div>
                         <div id="monaco-rust-container" class="editor-container">
-                            <div class="editor-loading">
+                            <div class="editor-loading" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1e1e1e; color: #fff; z-index: 100; gap: 12px; font-family: sans-serif;">
                                 <div class="crayon-spinner"></div>
-                                <span>Loading Monaco Rust Compiler...</span>
+                                <span>Loading Monaco Rust Sandbox...</span>
                             </div>
                         </div>
                     </section>
@@ -85,123 +72,19 @@
                     <!-- Resizer Slider -->
                     <div class="workspace-resizer border-neobrutalist" id="resizer-rust"></div>
 
-                    <!-- Right Analytics Panel -->
+                    <!-- Right Console Panel -->
                     <section class="analytics-pane border-neobrutalist shadow-flat" id="analytics-rust">
                         <div class="tabs-header-neobrutalist">
-                            <div class="tab-btn-neobrutalist active" data-tab="console-rust">🖥️ Console</div>
-                            <div class="tab-btn-neobrutalist" data-tab="benchmark-rust">📈 Benchmark</div>
-                            <div class="tab-btn-neobrutalist" data-tab="optimizer-rust">💡 Best Way <span id="opt-badge-rust" class="opt-badge" style="display:none;">0</span></div>
-                            <div class="tab-btn-neobrutalist" data-tab="metrics-rust">📊 Stats</div>
+                            <div class="tab-btn-neobrutalist active">🖥️ Terminal Console</div>
                         </div>
 
                         <div class="tab-content-container">
-                            <!-- Tab: Console -->
-                            <div class="tab-content active" id="tab-console-rust">
-                                <div class="console-wrapper">
-                                    <div id="console-output-rust" class="console-output placeholder">
-                                        Compile or run your Rust code to see output logs.
-                                    </div>
-                                    <div class="console-footer">
-                                        <span id="speed-rust">Execution time: -- ms</span>
-                                    </div>
+                            <div class="console-wrapper">
+                                <div id="console-output-rust" class="console-output placeholder">
+                                    Click "Run Code" to compile and execute your Rust code.
                                 </div>
-                            </div>
-
-                            <!-- Tab: Benchmark -->
-                            <div class="tab-content" id="tab-benchmark-rust">
-                                <div class="benchmark-grid">
-                                    <div class="stats-row">
-                                        <div class="stat-box border-neobrutalist yellow-bg shadow-flat">
-                                            <span class="box-label">Throughput</span>
-                                            <div id="ops-rust" class="box-val">--</div>
-                                            <span class="box-unit">Ops / Sec</span>
-                                        </div>
-                                        <div class="stat-box border-neobrutalist cyan-bg shadow-flat">
-                                            <span class="box-label">Mean Speed</span>
-                                            <div id="mean-rust" class="box-val">--</div>
-                                            <span class="box-unit">nanoseconds</span>
-                                        </div>
-                                        <div class="stat-box border-neobrutalist pink-bg shadow-flat">
-                                            <span class="box-label">Margin of Error</span>
-                                            <div id="moe-rust" class="box-val">--</div>
-                                            <span class="box-unit">Confidence ±</span>
-                                        </div>
-                                        <div class="stat-box border-neobrutalist green-bg shadow-flat">
-                                            <span class="box-label">Std Dev</span>
-                                            <div id="stddev-rust" class="box-val">--</div>
-                                            <span class="box-unit">variation</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Gauge -->
-                                    <div class="speedup-comparison-box border-neobrutalist shadow-flat" id="comparison-rust" style="display:none;">
-                                        <h4>🏆 Speedup Over baseline</h4>
-                                        <div class="gauge-grid">
-                                            <div class="gauge-score" id="pct-rust">--%</div>
-                                            <div class="gauge-info">
-                                                <div class="bar-row"><span class="bar-txt">User Code:</span><div class="outer-bar"><div id="bar-user-rust" class="inner-bar user-bar" style="width: 100%;"></div></div><span id="time-user-rust" class="bar-val-txt">-- ns</span></div>
-                                                <div class="bar-row"><span class="bar-txt">Optimal:</span><div class="outer-bar"><div id="bar-opt-rust" class="inner-bar opt-bar" style="width: 10%;"></div></div><span id="time-opt-rust" class="bar-val-txt">-- ns</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Chart -->
-                                    <div class="chart-box border-neobrutalist shadow-flat">
-                                        <h4>📈 Runtime Distribution curves</h4>
-                                        <div class="chart-container">
-                                            <canvas id="chart-rust"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab: Optimizer -->
-                            <div class="tab-content" id="tab-optimizer-rust">
-                                <div class="optimizer-wrapper">
-                                    <div class="score-card border-neobrutalist shadow-flat">
-                                        <div id="score-val-rust" class="score-circle border-neobrutalist">--</div>
-                                        <div class="score-meta">
-                                            <h4>Code Grade</h4>
-                                            <p id="desc-rust">Grade details will display after completing an optimizer scan.</p>
-                                        </div>
-                                    </div>
-                                    <div id="list-rust" class="suggestions-list">
-                                        <div class="suggestion-placeholder">🛡️ Scan your files to see optimization lints.</div>
-                                    </div>
-                                    <div class="diff-widget border-neobrutalist shadow-flat" id="diff-widget-rust" style="display:none;">
-                                        <div class="diff-widget-header border-neobrutalist">
-                                            <h4>🤝 Code Comparison Diffs</h4>
-                                            <button id="btn-apply-rust" class="crayon-mini-btn">Load Optimal Code</button>
-                                        </div>
-                                        <div class="diff-split-panels">
-                                            <div class="diff-split-pane original-pane">
-                                                <h5>Your Code</h5>
-                                                <pre><code id="diff-orig-rust"></code></pre>
-                                            </div>
-                                            <div class="diff-split-pane optimized-pane">
-                                                <h5>Optimized Code</h5>
-                                                <pre><code id="diff-opt-rust"></code></pre>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab: Stats -->
-                            <div class="tab-content" id="tab-metrics-rust">
-                                <div class="metrics-grid">
-                                    <div class="stat-box border-neobrutalist yellow-bg shadow-flat">
-                                        <h4>Total Lines</h4>
-                                        <div id="loc-rust" class="box-val">--</div>
-                                    </div>
-                                    <div class="stat-box border-neobrutalist pink-bg shadow-flat">
-                                        <h4>Heap Allocations Risk</h4>
-                                        <div id="allocs-rust" class="box-val">--</div>
-                                    </div>
-                                    <div class="stat-box border-neobrutalist cyan-bg shadow-flat">
-                                        <h4>Complexity Rating</h4>
-                                        <div id="complexity-rust" class="box-val">--</div>
-                                    </div>
+                                <div class="console-footer">
+                                    <span id="speed-rust">Execution time: -- ms</span>
                                 </div>
                             </div>
                         </div>
@@ -209,22 +92,16 @@
                 </div>
             </div>
 
-            <!-- Page 2: JavaScript IDE & Optimizer (Minimalist) -->
+            <!-- Page 2: JavaScript Compiler -->
             <div class="document-page" id="page-js-ide">
                 <header class="doc-header-minimal border-neobrutalist yellow-bg">
                     <div class="header-left">
                         <span class="page-emoji">🟨</span>
-                        <h1 class="page-title">JavaScript Playground</h1>
+                        <h1 class="page-title">JavaScript Playpen</h1>
                     </div>
                     <div class="ide-controls">
                         <button id="btn-run-js" class="control-btn border-neobrutalist shadow-flat yellow-btn">
-                            🖍️ Run
-                        </button>
-                        <button id="btn-bench-js" class="control-btn border-neobrutalist shadow-flat cyan-btn">
-                            ⏱️ Benchmark
-                        </button>
-                        <button id="btn-analyze-js" class="control-btn border-neobrutalist shadow-flat pink-btn">
-                            🔍 Optimize
+                            🖍️ Run Code
                         </button>
                     </div>
                 </header>
@@ -234,10 +111,10 @@
                     <section class="editor-pane border-neobrutalist shadow-flat">
                         <div class="editor-pane-header">
                             <span class="editor-filename">📄 main.js</span>
-                            <span class="editor-tag border-neobrutalist">JS Node.js v25.9</span>
+                            <span class="editor-tag border-neobrutalist">Node.js v25</span>
                         </div>
                         <div id="monaco-js-container" class="editor-container">
-                            <div class="editor-loading">
+                            <div class="editor-loading" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1e1e1e; color: #fff; z-index: 100; gap: 12px; font-family: sans-serif;">
                                 <div class="crayon-spinner"></div>
                                 <span>Loading Monaco Javascript Sandbox...</span>
                             </div>
@@ -247,123 +124,19 @@
                     <!-- Resizer Slider -->
                     <div class="workspace-resizer border-neobrutalist" id="resizer-js"></div>
 
-                    <!-- Right Analytics Panel -->
+                    <!-- Right Console Panel -->
                     <section class="analytics-pane border-neobrutalist shadow-flat" id="analytics-js">
                         <div class="tabs-header-neobrutalist">
-                            <div class="tab-btn-neobrutalist active" data-tab="console-js">🖥️ Console</div>
-                            <div class="tab-btn-neobrutalist" data-tab="benchmark-js">📈 Benchmark</div>
-                            <div class="tab-btn-neobrutalist" data-tab="optimizer-js">💡 Best Way <span id="opt-badge-js" class="opt-badge" style="display:none;">0</span></div>
-                            <div class="tab-btn-neobrutalist" data-tab="metrics-js">📊 Stats</div>
+                            <div class="tab-btn-neobrutalist active">🖥️ Terminal Console</div>
                         </div>
 
                         <div class="tab-content-container">
-                            <!-- Tab: Console -->
-                            <div class="tab-content active" id="tab-console-js">
-                                <div class="console-wrapper">
-                                    <div id="console-output-js" class="console-output placeholder">
-                                        Execute or benchmark JavaScript code to see output logs.
-                                    </div>
-                                    <div class="console-footer">
-                                        <span id="speed-js">Execution time: -- ms</span>
-                                    </div>
+                            <div class="console-wrapper">
+                                <div id="console-output-js" class="console-output placeholder">
+                                    Click "Run Code" to execute your JavaScript code.
                                 </div>
-                            </div>
-
-                            <!-- Tab: Benchmark -->
-                            <div class="tab-content" id="tab-benchmark-js">
-                                <div class="benchmark-grid">
-                                    <div class="stats-row">
-                                        <div class="stat-box border-neobrutalist yellow-bg shadow-flat">
-                                            <span class="box-label">Throughput</span>
-                                            <div id="ops-js" class="box-val">--</div>
-                                            <span class="box-unit">Ops / Sec</span>
-                                        </div>
-                                        <div class="stat-box border-neobrutalist cyan-bg shadow-flat">
-                                            <span class="box-label">Mean Speed</span>
-                                            <div id="mean-js" class="box-val">--</div>
-                                            <span class="box-unit">nanoseconds</span>
-                                        </div>
-                                        <div class="stat-box border-neobrutalist pink-bg shadow-flat">
-                                            <span class="box-label">Margin of Error</span>
-                                            <div id="moe-js" class="box-val">--</div>
-                                            <span class="box-unit">Confidence ±</span>
-                                        </div>
-                                        <div class="stat-box border-neobrutalist green-bg shadow-flat">
-                                            <span class="box-label">Std Dev</span>
-                                            <div id="stddev-js" class="box-val">--</div>
-                                            <span class="box-unit">variation</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Gauge -->
-                                    <div class="speedup-comparison-box border-neobrutalist shadow-flat" id="comparison-js" style="display:none;">
-                                        <h4>🏆 Speedup Over baseline</h4>
-                                        <div class="gauge-grid">
-                                            <div class="gauge-score" id="pct-js">--%</div>
-                                            <div class="gauge-info">
-                                                <div class="bar-row"><span class="bar-txt">User Code:</span><div class="outer-bar"><div id="bar-user-js" class="inner-bar user-bar" style="width: 100%;"></div></div><span id="time-user-js" class="bar-val-txt">-- ns</span></div>
-                                                <div class="bar-row"><span class="bar-txt">Optimal:</span><div class="outer-bar"><div id="bar-opt-js" class="inner-bar opt-bar" style="width: 10%;"></div></div><span id="time-opt-js" class="bar-val-txt">-- ns</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Chart -->
-                                    <div class="chart-box border-neobrutalist shadow-flat">
-                                        <h4>📈 JIT Runtime Distribution</h4>
-                                        <div class="chart-container">
-                                            <canvas id="chart-js"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab: Optimizer -->
-                            <div class="tab-content" id="tab-optimizer-js">
-                                <div class="optimizer-wrapper">
-                                    <div class="score-card border-neobrutalist shadow-flat">
-                                        <div id="score-val-js" class="score-circle border-neobrutalist">--</div>
-                                        <div class="score-meta">
-                                            <h4>JIT Code Grade</h4>
-                                            <p id="desc-js">Grade details will display after completing an optimizer scan.</p>
-                                        </div>
-                                    </div>
-                                    <div id="list-js" class="suggestions-list">
-                                        <div class="suggestion-placeholder">🛡️ Scan your files to see JIT optimization lints.</div>
-                                    </div>
-                                    <div class="diff-widget border-neobrutalist shadow-flat" id="diff-widget-js" style="display:none;">
-                                        <div class="diff-widget-header border-neobrutalist">
-                                            <h4>🤝 Code Comparison Diffs</h4>
-                                            <button id="btn-apply-js" class="crayon-mini-btn">Load Optimal Code</button>
-                                        </div>
-                                        <div class="diff-split-panels">
-                                            <div class="diff-split-pane original-pane">
-                                                <h5>Your Code</h5>
-                                                <pre><code id="diff-orig-js"></code></pre>
-                                            </div>
-                                            <div class="diff-split-pane optimized-pane">
-                                                <h5>Optimized Code</h5>
-                                                <pre><code id="diff-opt-js"></code></pre>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab: Stats -->
-                            <div class="tab-content" id="tab-metrics-js">
-                                <div class="metrics-grid">
-                                    <div class="stat-box border-neobrutalist yellow-bg shadow-flat">
-                                        <h4>Total Lines</h4>
-                                        <div id="loc-js" class="box-val">--</div>
-                                    </div>
-                                    <div class="stat-box border-neobrutalist pink-bg shadow-flat">
-                                        <h4>V8 Allocations Risk</h4>
-                                        <div id="allocs-js" class="box-val">--</div>
-                                    </div>
-                                    <div class="stat-box border-neobrutalist cyan-bg shadow-flat">
-                                        <h4>Complexity Rating</h4>
-                                        <div id="complexity-js" class="box-val">--</div>
-                                    </div>
+                                <div class="console-footer">
+                                    <span id="speed-js">Execution time: -- ms</span>
                                 </div>
                             </div>
                         </div>
@@ -371,63 +144,11 @@
                 </div>
             </div>
 
-            <!-- Page 3: About Document (Preserved with linear borders) -->
-            <div class="document-page" id="page-about">
-                <header class="doc-header border-neobrutalist yellow-bg shadow-flat" style="border-bottom: 3.5px solid #000; padding: 16px; border-radius: 4px;">
-                    <div class="doc-title-row">
-                        <span class="doc-emoji">🧠</span>
-                        <h1 class="doc-title">About RustBin Sandbox Tech</h1>
-                    </div>
-                    <p class="doc-desc">An off-line technical document outlining how this compiler playground sandboxes, compiles, and micro-benchmarks code.</p>
-                </header>
-
-                <div class="about-scroll-container">
-                    <div class="about-notebook border-neobrutalist shadow-flat">
-                        <section class="about-section border-neobrutalist">
-                            <h3>⚙️ How Local Subprocess Runtimes Work</h3>
-                            <p class="handwritten-p">When you click <strong>Run</strong> inside the playrooms, the backend engine writes your text inputs to a clean temporary file within the <code>temp_runs</code> folder, completely sandboxed from standard workspace directories. Subprocess commands are called locally:</p>
-                            <div class="crayon-doodle-box border-neobrutalist pink-bg">
-                                <ul>
-                                    <li><strong>Rust Compiler Sandbox</strong>: Compiles code using the local <code>rustc</code> toolchain, builds it, runs the resulting binary with stdout/stderr pipes, and executes in $< 200$ms.</li>
-                                    <li><strong>JavaScript Runtime Sandbox</strong>: Spawns a local <code>node</code> command to interpret Javascript files on your machine's Node.js compiler environment offline.</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section class="about-section border-neobrutalist">
-                            <h3>⏱️ High-Precision V8 and Release Benchmarking</h3>
-                            <p class="handwritten-p">To bypass random background scheduling noise from the operating system, RustBin uses statistical profiling:</p>
-                            <div class="crayon-doodle-box border-neobrutalist cyan-bg">
-                                <p class="handwritten-p"><strong>1. CPU Warmup Passes</strong>: Runs the function loop 15-20 times beforehand. This heats up the CPU cache and triggers Node's V8 JIT <strong>TurboFan compiler</strong> to compile and optimize Javascript hot paths before measurements start.</p>
-                                <p class="handwritten-p"><strong>2. Compiler Opt-Outs</strong>: Applies <code>std::hint::black_box</code> statements in Rust to keep the compiler from stripping out dead benchmark loops.</p>
-                                <p class="handwritten-p"><strong>3. 95% Confidence Intervals</strong>: Runs the loops 200 times. Runtimes are mathematically sorted to extract the Mean ($\mu$) and Standard Deviation ($\sigma$), and standard error is solved to establish a 95% Confidence Margin of Error (MoE):</p>
-                                <div class="crayon-formula border-neobrutalist">$MoE = \pm 1.96 \times \frac{\sigma}{\sqrt{N}}$</div>
-                            </div>
-                        </section>
-
-                        <section class="about-section border-neobrutalist">
-                            <h3>🔍 Heuristic AST Optimization Scanners</h3>
-                            <p class="handwritten-p">Our local optimizer performs structural scans without internet access or AI dependencies:</p>
-                            <div class="crayon-doodle-box border-neobrutalist yellow-bg">
-                                <ul>
-                                    <li><strong>Clippy warnings</strong>: Copies your Rust file to a local dummy package and compiles `cargo clippy` to extract compiler-driven lint diagnostics natively.</li>
-                                    <li><strong>V8 and Rust AST Heuristics</strong>: Scans the code structures for O(N^2) quadratic lookups, redundant heap allocations, and loop vector capacity grow bottlenecks, outputting clear optimized comparisons.</li>
-                                </ul>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </div>
-
         </main>
     </div>
 
-    <!-- Monaco Editor Scripts via jsDelivr CDN (Blazing Fast & Ultra Reliable) -->
+    <!-- Monaco Editor Script via jsDelivr (Instant & Ultra Reliable) -->
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
-    <!-- Chart JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- MathJax for formula rendering in About page -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <!-- App Script -->
     <script src="app.js"></script>
 </body>
